@@ -13,6 +13,19 @@ Send text messages by means of the HTTP protocol with the service of https://www
 Usage
 ------------
 
+### Configuration
+
+
+Use `MessagebirdSms.configure` to set `product_token`, `endpoint` and `path
+
+```ruby
+MessagebirdSms.configure do |config|
+  config.product_token = 'YOUR_MESSAGEBIRD_API_TOKEN'
+  config.endpoint = 'https://rest.messagebird.com' # Messagebird default
+  config.path = '/messages' # Messagebird default
+end
+```
+
 Create a class that is inherited from `MessagebirdSms::Messenger`.
 
 ```ruby
