@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    messagebird-sms (0.2.7)
+    messagebird-sms (0.0.1)
       phony (~> 2.12)
 
 GEM
