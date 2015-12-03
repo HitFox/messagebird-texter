@@ -15,8 +15,7 @@ Usage
 
 ### Configuration
 
-
-Use `MessagebirdSms.configure` to set `product_token`, `endpoint` and `path
+Use `MessagebirdSms.configure` to set `product_token`, `endpoint` and `path`
 
 ```ruby
 MessagebirdSms.configure do |config|
