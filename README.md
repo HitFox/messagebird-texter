@@ -4,10 +4,6 @@
 messagebird-sms
 =======
 
-[![Build Status](https://img.shields.io/travis/HitFox/messagebird-sms.svg?style=flat-square)](https://travis-ci.org/HitFox/messagebird-sms)
-[![Gem](https://img.shields.io/gem/dt/messagebird-sms.svg?style=flat-square)](https://rubygems.org/gems/messagebird-sms)
-[![Code Climate](https://img.shields.io/codeclimate/github/HitFox/messagebird-sms.svg?style=flat-square)](https://codeclimate.com/github/HitFox/messagebird-sms)
-[![Coverage](https://img.shields.io/coveralls/HitFox/messagebird-sms.svg?style=flat-square)](https://coveralls.io/github/HitFox/messagebird-sms)
 
 Description
 -----------
