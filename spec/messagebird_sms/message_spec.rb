@@ -13,20 +13,6 @@ RSpec.describe MessagebirdSms::Message do
     message.reference = 'Ref:123'
     message
   end
-
-  describe '#dcs_numeric?' do
-    context 'when dcs is provided as number' do
-      it { expect(message.dcs_numeric?).to be true }
-    end
-    
-    context 'when dcs is provided not as number' do
-      subject(:resource) do
-        message.dcs = 'Fuubar'        
-        message
-      end
-      it { expect(resource.dcs_numeric?).to be false }
-    end
-  end
   
   describe '#receiver_plausible?' do
     context 'when a valid phone number is provided' do
@@ -151,13 +137,6 @@ RSpec.describe MessagebirdSms::Message do
         it { expect { resource.deliver! }.to raise_error MessagebirdSms::Message::ToUnplausible }
       end
     
-      context 'when dcs is not a number' do
-        subject(:resource) do
-          message.dcs = 'fuubar'
-          message
-        end
-        it { expect { resource.deliver! }.to raise_error MessagebirdSms::Message::DCSNotNumeric }
-      end
     end
     
     context 'when all needed attributes set' do
