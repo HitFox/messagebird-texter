@@ -12,7 +12,7 @@ RSpec.describe MessagebirdSms do
       config.from = '+41 44 111 22 33'
       config.to = '+41 44 111 22 33'
       config.product_token = 'SOMETOKEN'
-      config.endpoint = 'http://example.com'
+      config.endpoint = 'https://rest.messagebird.com'
       config.path = '/example'
     end
   end
@@ -22,7 +22,7 @@ RSpec.describe MessagebirdSms do
       expect(MessagebirdSms.config.from).to eq '+41 44 111 22 33'
       expect(MessagebirdSms.config.to).to eq '+41 44 111 22 33'
       expect(MessagebirdSms.config.product_token).to eq 'SOMETOKEN'
-      expect(MessagebirdSms.config.endpoint).to eq 'http://example.com'
+      expect(MessagebirdSms.config.endpoint).to eq 'https://rest.messagebird.com'
       expect(MessagebirdSms.config.path).to eq '/example'
     end
   end

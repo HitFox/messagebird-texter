@@ -49,23 +49,6 @@ RSpec.describe MessagebirdSms::Configuration do
     end
   end
   
-  describe '#dcs' do
-    context 'when dcs is set through setter' do
-      subject(:resource) do 
-        config.dcs = 8
-        config
-      end
-      it 'returns the setted dcs' do
-        expect(resource.dcs).to eq 8
-      end
-    end
-    
-    context 'when dcs is not set' do
-      it 'returns the default enpoint set in constant' do
-        expect(config.dcs).to eq MessagebirdSms::Configuration::DCS
-      end
-    end
-  end
   
   describe '#product_token' do
     context 'when product_token is set through setter' do
@@ -86,37 +69,6 @@ RSpec.describe MessagebirdSms::Configuration do
       it 'returns the setted product_token' do
         expect(resource.product_token).to eq 'SOMEKEY'
       end
-    end
-  end
-  
-  describe '#from' do
-    context 'when from is set through setter' do
-      subject(:resource) do 
-        config.from = 'me'
-        config
-      end
-      it 'returns the setted from' do
-        expect(resource.from).to eq 'me'
-      end
-    end
-  end
-  
-  describe '#to' do
-    context 'when to is set through setter' do
-      subject(:resource) do 
-        config.to = 'you'
-        config
-      end
-      it 'returns the setted to' do
-        expect(resource.to).to eq 'you'
-      end
-    end
-  end
-  
-  describe '#defaults' do
-    it 'returns confog defaults' do
-      expect(config.defaults.key?(:from)).to be true
-      expect(config.defaults.key?(:to)).to be true
     end
   end
 end

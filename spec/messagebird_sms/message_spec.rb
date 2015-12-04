@@ -86,14 +86,16 @@ RSpec.describe MessagebirdSms::Message do
   
   describe '#deliver' do
     context 'when product token is missing in configuration' do
-      before { MessagebirdSms.configure { |config| config.product_token = nil } }
+      before { 
+        #binding.pry
+        MessagebirdSms.configure { |config| config.product_token = nil } }
       it { expect { message.deliver }.to raise_error MessagebirdSms::Configuration::ProductTokenMissing }
     end
     
     context 'when all needed attributes set' do
       before do 
-        MessagebirdSms.configure { |config| config.product_token = 'SOMETOKEN' }
-        request = instance_double(MessagebirdSms::Request)
+        ActionTexter.configure { |config| config.product_token = 'SOMETOKEN' }
+        request = instance_double(ActionTexter::Request)
         allow(request).to receive(:perform).and_return(true)
         allow(message).to receive(:request).and_return(request)
       end
@@ -108,7 +110,7 @@ RSpec.describe MessagebirdSms::Message do
     # end
     
     context 'when product token is given' do
-      before { MessagebirdSms.configure { |config| config.product_token = 'SOMETOKEN' } }
+      before { ActionTexter.configure { |config| config.product_token = 'SOMETOKEN' } }
       context 'when receiver is missing' do
         subject(:resource) do
           message.to = nil
@@ -161,7 +163,7 @@ RSpec.describe MessagebirdSms::Message do
     context 'when all needed attributes set' do
       before do 
         MessagebirdSms.configure { |config| config.product_token = 'SOMETOKEN' }
-        request = instance_double(MessagebirdSms::Request)
+        request = instance_double(ActionTexter::Request)
         allow(request).to receive(:perform).and_return(true)
         allow(message).to receive(:request).and_return(request)
       end

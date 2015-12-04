@@ -1,3 +1,4 @@
+require 'action-texter'
 require 'messagebird_sms/configuration'
 require 'pry'
 
@@ -5,6 +6,7 @@ module MessagebirdSms
   autoload :Messenger, 'messagebird_sms/messenger'
   autoload :Message, 'messagebird_sms/message'
   autoload :MessageDelivery, 'messagebird_sms/message_delivery'
+  autoload :Request, 'messagebird_sms/request'
   autoload :Webhook, 'messagebird_sms/webhook'
   
   class << self
@@ -13,7 +15,7 @@ module MessagebirdSms
     end
 
     def configuration
-      @configuration ||= Configuration.new
+      @configuration ||= MessagebirdSms::Configuration.new
     end
     
     alias :config :configuration

@@ -65,29 +65,4 @@ RSpec.describe MessagebirdSms::Messenger do
       it { expect(message.body).to eq message_body }
     end
   end
-  
-  describe '.method_missing' do
-    context 'when a class method is provided that a instance respond to' do
-      it { expect(NotificationMessenger).to respond_to :notification }
-      it { expect(NotificationMessenger.notification).to be_kind_of MessagebirdSms::MessageDelivery }
-    end
-    
-    context 'when a class method is provided that a instance not respond to' do
-      it { expect(NotificationMessenger).to_not respond_to :fuubar }
-      it { expect { NotificationMessenger.fuubar }.to raise_error NoMethodError }
-    end
-  end
-  
-  describe '.default_params' do
-    subject(:default_params) { NotificationMessenger.default_params }
-    context 'when no default is given' do
-      before { NotificationMessenger.default {} }
-      it { expect(default_params).to eq MessagebirdSms.config.defaults }
-    end
-    
-    context 'when a default is given' do
-      before { NotificationMessenger.default from: 'me' }
-      it { expect(NotificationMessenger.default_params).to eq MessagebirdSms.config.defaults.merge(from: 'me') }
-    end
-  end
 end

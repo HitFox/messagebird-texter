@@ -19,5 +19,9 @@ module MessagebirdSms
     def error
       body.sub('Error: ERROR', '').strip
     end
+
+    def to_json
+      JSON.parse(body)
+    end
   end
 end
