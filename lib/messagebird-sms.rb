@@ -7,7 +7,6 @@ module MessagebirdSms
   autoload :Message, 'messagebird_sms/message'
   autoload :MessageDelivery, 'messagebird_sms/message_delivery'
   autoload :Request, 'messagebird_sms/request'
-  autoload :Webhook, 'messagebird_sms/webhook'
   
   class << self
     def configure
