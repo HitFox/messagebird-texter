@@ -1,6 +1,5 @@
 require 'json'
 require 'phony'
-#require 'messagebird_sms/request'
 
 module MessagebirdSms
   class Message < ActionTexter::Message
