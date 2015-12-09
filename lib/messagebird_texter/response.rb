@@ -1,6 +1,6 @@
 require 'messagebird_texter/response/body'
 require 'messagebird_texter/response/error'
-module MessagebirdSms
+module MessagebirdTexter
   class Response
     attr_reader :net_http_response, :body, :code
 
@@ -19,11 +19,11 @@ module MessagebirdSms
     end
 
     def body
-      MessagebirdSms::Response::Body.new(@body) if success?
+      MessagebirdTexter::Response::Body.new(@body) if success?
     end
 
     def error
-      MessagebirdSms::Response::Error.new(@body) if failure?
+      MessagebirdTexter::Response::Error.new(@body) if failure?
     end
   end
 end

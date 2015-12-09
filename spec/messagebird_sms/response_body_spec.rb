@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'messagebird_texter/response'
 require 'messagebird_texter/response/body'
 
-RSpec.describe MessagebirdSms::Response::Body do
+RSpec.describe MessagebirdTexter::Response::Body do
   subject(:body) do
     described_class.new('{
                             "id":"b1a429b045665b1cea8dda4b45863728",

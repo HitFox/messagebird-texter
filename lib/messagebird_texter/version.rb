@@ -1,6 +1,6 @@
 require_relative 'gem_version'
 
-module MessagebirdSms
+module MessagebirdTexter
   def self.version
     gem_version
   end

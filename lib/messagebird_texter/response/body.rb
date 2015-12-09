@@ -1,4 +1,4 @@
-module MessagebirdSms
+module MessagebirdTexter
   class Response
     class Body
       attr_reader :id,

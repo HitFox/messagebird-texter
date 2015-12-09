@@ -5,7 +5,7 @@ require 'messagebird_texter/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'messagebird-sms'
-  spec.version       = MessagebirdSms.version
+  spec.version       = MessagebirdTexter.version
   spec.authors       = ['itschn']
   spec.email         = ['michael.rueffer@hitfoxgroup.com']
 

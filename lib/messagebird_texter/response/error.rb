@@ -1,4 +1,4 @@
-module MessagebirdSms
+module MessagebirdTexter
   class Response
     class Error
       attr_reader :code, :description

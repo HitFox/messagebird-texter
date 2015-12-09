@@ -2,9 +2,9 @@ require 'spec_helper'
 require 'messagebird_texter/message'
 require 'action_texter/validator/request'
 
-RSpec.describe MessagebirdSms::Message do
+RSpec.describe MessagebirdTexter::Message do
   before(:each) do |_example|
-    MessagebirdSms.configure do |config|
+    MessagebirdTexter.configure do |config|
       config.path = '/messages'
       config.endpoint = 'http://messagebird.sms.org'
       config.content_type = 'application/json'
@@ -23,11 +23,11 @@ RSpec.describe MessagebirdSms::Message do
   end
 
   describe '#request' do
-    it { expect(message.request).to be_kind_of(MessagebirdSms::Request) }
+    it { expect(message.request).to be_kind_of(MessagebirdTexter::Request) }
   end
 
   describe '#to_json' do
-    before { MessagebirdSms.configure { |config| config.product_token = 'SOMETOKEN' } }
+    before { MessagebirdTexter.configure { |config| config.product_token = 'SOMETOKEN' } }
 
     context 'when all attributes set' do
       let(:json_body) { JSON.generate(recipients: '+41 44 111 22 33', originator: 'ACME', body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirood tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At v') }

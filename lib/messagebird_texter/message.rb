@@ -1,10 +1,10 @@
 require 'json'
 require 'phony'
 
-module MessagebirdSms
+module MessagebirdTexter
   class Message < ActionTexter::Message
     def request
-      MessagebirdSms::Request.new(to_json)
+      MessagebirdTexter::Request.new(to_json)
     end
 
     def to_json

@@ -15,20 +15,20 @@ Usage
 
 ### Configuration
 
-Use `MessagebirdSms.configure` to set `product_token`, `endpoint` and `path`
+Use `MessagebirdTexter.configure` to set `product_token`, `endpoint` and `path`
 
 ```ruby
-MessagebirdSms.configure do |config|
+MessagebirdTexter.configure do |config|
   config.product_token = 'YOUR_MESSAGEBIRD_API_TOKEN'
   config.endpoint = 'https://rest.messagebird.com' # Messagebird default
   config.path = '/messages' # Messagebird default
 end
 ```
 
-Create a class that is inherited from `MessagebirdSms::Messenger`.
+Create a class that is inherited from `MessagebirdTexter::Messenger`.
 
 ```ruby
-class TextMessageNotifier < MessagebirdSms::Messenger
+class TextMessageNotifier < MessagebirdTexter::Messenger
 end
 ```
 
@@ -36,7 +36,7 @@ Now you can add your first welcome message.
 This can be as simple as:
 
 ```ruby
-class TextMessageNotifier < MessagebirdSms::Messenger
+class TextMessageNotifier < MessagebirdTexter::Messenger
   default from: 'some string or mobile number'
 
   def welcome(recipient)
@@ -48,14 +48,14 @@ end
 ```
 ### Setting defaults
 
-It is possible to set default values that will be used in every method in your MessagebirdSms Messenger class. To implement this functionality, you just call the public class method default which is inherited from MessagebirdSms::Messenger. This method accepts a Hash as the parameter. You can use :from, :to and :body as the key.
+It is possible to set default values that will be used in every method in your MessagebirdTexter Messenger class. To implement this functionality, you just call the public class method default which is inherited from MessagebirdTexter::Messenger. This method accepts a Hash as the parameter. You can use :from, :to and :body as the key.
 
 Note that every value you set with this method will get overwritten if you use the same key in your mailer method.
 
 Example:
 
 ```ruby
-class TextMessageNotifier < MessagebirdSms::Messenger
+class TextMessageNotifier < MessagebirdTexter::Messenger
   default from: "Quentin", "00491710000000"
   .....
 end
@@ -64,9 +64,9 @@ end
 
 In order to send your sms, you simply call the method and then call `deliver_now` on the return value.
 
-Calling the method returns a MessagebirdSms Message object:
+Calling the method returns a MessagebirdTexter Message object:
 ```ruby
-message = TextMessageNotifier.welcome(User.first)   # => Returns a MessagebirdSms::Message object
+message = TextMessageNotifier.welcome(User.first)   # => Returns a MessagebirdTexter::Message object
 message.deliver_now
 ```
 

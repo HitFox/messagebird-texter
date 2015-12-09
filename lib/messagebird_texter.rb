@@ -1,7 +1,7 @@
 require 'action_texter'
 require 'messagebird_texter/configuration'
 
-module MessagebirdSms
+module MessagebirdTexter
   autoload :Messenger, 'messagebird_texter/messenger'
   autoload :Message, 'messagebird_texter/message'
   autoload :MessageDelivery, 'messagebird_texter/message_delivery'
@@ -13,7 +13,7 @@ module MessagebirdSms
     end
 
     def configuration
-      @configuration ||= MessagebirdSms::Configuration.new
+      @configuration ||= MessagebirdTexter::Configuration.new
     end
 
     alias_method :config, :configuration

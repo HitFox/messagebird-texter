@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'messagebird_texter/response'
 require 'messagebird_texter/response/error'
 
-RSpec.fdescribe MessagebirdSms::Response do
+RSpec.fdescribe MessagebirdTexter::Response do
   let(:successful_response) do
     http_response = Net::HTTPOK.new('post', 201, 'created')
     http_response.content_type = 'application/json'
@@ -31,7 +31,7 @@ RSpec.fdescribe MessagebirdSms::Response do
 
       it { expect(resource.success?).to be false }
       it { expect(resource.failure?).to be true }
-      it { expect(resource.error).to be_a_kind_of(MessagebirdSms::Response::Error) }
+      it { expect(resource.error).to be_a_kind_of(MessagebirdTexter::Response::Error) }
     end
   end
 end

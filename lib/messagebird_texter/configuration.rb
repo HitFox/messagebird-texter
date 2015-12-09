@@ -1,4 +1,4 @@
-module MessagebirdSms
+module MessagebirdTexter
   class Configuration < ActionTexter::Configuration
     def initialize
       @endpoint = 'https://rest.messagebird.com'

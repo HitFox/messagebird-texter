@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-RSpec.describe MessagebirdSms do
+RSpec.describe MessagebirdTexter do
   it 'has a version number' do
-    expect(MessagebirdSms::VERSION).not_to be nil
-    expect(MessagebirdSms.version).not_to be nil
+    expect(MessagebirdTexter::VERSION).not_to be nil
+    expect(MessagebirdTexter.version).not_to be nil
   end
 
   before do
-    MessagebirdSms.configure do |config|
+    MessagebirdTexter.configure do |config|
       config.from = '+41 44 111 22 33'
       config.to = '+41 44 111 22 33'
       config.product_token = 'SOMETOKEN'
@@ -18,11 +18,11 @@ RSpec.describe MessagebirdSms do
 
   describe '.configuration' do
     it 'delegates all defaults to the current configuration' do
-      expect(MessagebirdSms.config.from).to eq '+41 44 111 22 33'
-      expect(MessagebirdSms.config.to).to eq '+41 44 111 22 33'
-      expect(MessagebirdSms.config.product_token).to eq 'SOMETOKEN'
-      expect(MessagebirdSms.config.endpoint).to eq 'https://rest.messagebird.com'
-      expect(MessagebirdSms.config.path).to eq '/example'
+      expect(MessagebirdTexter.config.from).to eq '+41 44 111 22 33'
+      expect(MessagebirdTexter.config.to).to eq '+41 44 111 22 33'
+      expect(MessagebirdTexter.config.product_token).to eq 'SOMETOKEN'
+      expect(MessagebirdTexter.config.endpoint).to eq 'https://rest.messagebird.com'
+      expect(MessagebirdTexter.config.path).to eq '/example'
     end
   end
 end

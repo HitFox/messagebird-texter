@@ -1,7 +1,7 @@
 require 'messagebird_texter/response'
 require 'messagebird_texter/validator/request'
 
-module MessagebirdSms
+module MessagebirdTexter
   class Request < ActionTexter::Request
     attr_accessor :body
 
@@ -9,9 +9,9 @@ module MessagebirdSms
 
     def initialize(body)
       @body     = body
-      @endpoint = MessagebirdSms.config.endpoint
-      @path     = MessagebirdSms.config.path
-      @api_key  = MessagebirdSms.config.product_token
+      @endpoint = MessagebirdTexter.config.endpoint
+      @path     = MessagebirdTexter.config.path
+      @api_key  = MessagebirdTexter.config.product_token
     end
 
     def perform
@@ -25,7 +25,7 @@ module MessagebirdSms
     end
 
     def valid?
-      MessagebirdSms::Validator::Request.new
+      MessagebirdTexter::Validator::Request.new
     end
   end
 end

@@ -34,13 +34,13 @@ RSpec.describe 'deliver sms' do
                                   }
                   }'
 
-    MessagebirdSms.configure do |config|
+    MessagebirdTexter.configure do |config|
       config.product_token = 'SOMETOKEN'
       config.endpoint = 'http://test.host.org'
       config.path = '/example'
     end
 
-    class NotificationMessenger < MessagebirdSms::Messenger
+    class NotificationMessenger < MessagebirdTexter::Messenger
       def notification
         content from: 'Sender', to: '+41 44 111 22 33', body: 'lorem ipsum', reference: 'Ref:123'
       end
@@ -53,7 +53,7 @@ RSpec.describe 'deliver sms' do
       .to_return(status: 201, body: @response, headers: {})
   end
   after(:each) do
-    MessagebirdSms.configure do |config|
+    MessagebirdTexter.configure do |config|
       config.product_token = 'SOMETOKEN'
       config.endpoint = 'http://test.host.org'
       config.path = '/example'
@@ -61,7 +61,7 @@ RSpec.describe 'deliver sms' do
   end
 
   describe 'the message delivery response' do
-    before { MessagebirdSms.config.product_token = 'SOMETOKEN' }
+    before { MessagebirdTexter.config.product_token = 'SOMETOKEN' }
     subject { NotificationMessenger.notification.deliver_now! }
 
     it 'reponds to #success? with true' do

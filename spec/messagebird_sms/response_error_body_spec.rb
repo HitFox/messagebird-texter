@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'messagebird_texter/response'
 require 'messagebird_texter/response/error'
 
-RSpec.describe MessagebirdSms::Response::Error do
+RSpec.describe MessagebirdTexter::Response::Error do
   subject(:object) do
     described_class.new('{"errors":
                             [

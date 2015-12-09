@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'messagebird_texter/configuration'
 
-RSpec.describe MessagebirdSms::Configuration do
+RSpec.describe MessagebirdTexter::Configuration do
   let(:config) { described_class.new }
 
   describe '#endpoint' do

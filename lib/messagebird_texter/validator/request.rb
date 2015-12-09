@@ -1,4 +1,4 @@
-module MessagebirdSms
+module MessagebirdTexter
   module Validator
     class Request
       class ProductTokenMissing < ArgumentError; end

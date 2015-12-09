@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'messagebird_texter/messenger'
 
-RSpec.describe MessagebirdSms::Messenger do
+RSpec.describe MessagebirdTexter::Messenger do
   before do
-    class NotificationMessenger < MessagebirdSms::Messenger
+    class NotificationMessenger < MessagebirdTexter::Messenger
       def notification
         content from: 'Sender'
       end
