@@ -19,21 +19,21 @@ module MessagebirdTexter
                   :recipients
 
       def initialize(body)
-        @parsed_body        = JSON.parse(body, symbolize_names: true)
-        @id                 = @parsed_body[:id]
-        @href               = @parsed_body[:href]
-        @direction          = @parsed_body[:direction]
-        @type               = @parsed_body[:type]
-        @originator         = @parsed_body[:originator]
-        @content            = @parsed_body[:body]
-        @reference          = @parsed_body[:reference]
-        @validity           = @parsed_body[:validity]
-        @gateway            = @parsed_body[:gateway]
-        @datacoding         = @parsed_body[:datacoding]
-        @mclass             = @parsed_body[:mclass]
-        @scheduled_datetime = @parsed_body[:scheduledDatetime]
-        @created_datetime   = @parsed_body[:createdDatetime]
-        @recipients         = @parsed_body[:recipients]
+        parsed_body         = JSON.parse(body, symbolize_names: true)
+        @id                 = parsed_body[:id]
+        @href               = parsed_body[:href]
+        @direction          = parsed_body[:direction]
+        @type               = parsed_body[:type]
+        @originator         = parsed_body[:originator]
+        @content            = parsed_body[:body]
+        @reference          = parsed_body[:reference]
+        @validity           = parsed_body[:validity]
+        @gateway            = parsed_body[:gateway]
+        @datacoding         = parsed_body[:datacoding]
+        @mclass             = parsed_body[:mclass]
+        @scheduled_datetime = parsed_body[:scheduledDatetime]
+        @created_datetime   = parsed_body[:createdDatetime]
+        @recipients         = parsed_body[:recipients]
       end
 
       def scheduled_datetime
@@ -53,7 +53,8 @@ module MessagebirdTexter
 
         ) unless @recipients.nil?
       end
-
+      
+      private
       def items
         @recipients[:items].map do |i|
           OpenStruct.new(item(i))
