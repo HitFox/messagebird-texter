@@ -1,7 +1,8 @@
 require 'messagebird_sms/response'
+require 'messagebird_sms/validator/request'
 
 module MessagebirdSms
-  class Request
+  class Request < ActionTexter::Request
     attr_accessor :body
     
     attr_reader :response
@@ -14,15 +15,17 @@ module MessagebirdSms
     end
     
     def perform
-      raise MessagebirdSms::Configuration::EndpointMissing.new("Please provide an valid api endpoint.\nIf you leave this config blank, the default will be set to https://rest.messagebird.com.") if @endpoint.nil? || @endpoint.empty?
-      raise MessagebirdSms::Configuration::PathMissing.new("Please provide an valid api path.\nIf you leave this config blank, the default will be set to /message.") if @path.nil? || @path.empty?
-      raise MessagebirdSms::Configuration::PathMissing.new("Please provide an valid api path.\nIf you leave this config blank, the default will be set to /message.") if @path.nil? || @path.empty?
-      raise MessagebirdSms::Configuration::ProductTokenMissing.new("Please provide an valid product key.\nAfter signup at https://www.messagebird.com/, you will find one in your settings.") if @api_key.nil?
-      uri = URI.parse(@endpoint)
-      Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
-        @response = Response.new(http.post(@path, body, initheader = {'Authorization' => "AccessKey #{@api_key}", 'Content-Type' => 'application/json' }))
+      if valid?
+        uri = URI.parse(@endpoint)
+        Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+          @response = Response.new(http.post(@path, body, {'Authorization' => "AccessKey #{@api_key}", 'Content-Type' => 'application/json' }))
+        end
+        response
       end
-      response
+    end
+
+    def valid?
+      MessagebirdSms::Validator::Request.new
     end
   end
 end

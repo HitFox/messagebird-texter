@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'messagebird_sms/response'
-require 'messagebird_sms/response/error_body'
+require 'messagebird_sms/response/error'
 
 RSpec.fdescribe MessagebirdSms::Response do
   let(:successful_response) do 
@@ -31,7 +31,7 @@ RSpec.fdescribe MessagebirdSms::Response do
 
       it { expect(resource.success?).to be false }
       it { expect(resource.failure?).to be true }
-      it { expect(resource.error).to be_a_kind_of( MessagebirdSms::Response::ErrorBody )}
+      it { expect(resource.error).to be_a_kind_of( MessagebirdSms::Response::Error )}
     end
   end
 end

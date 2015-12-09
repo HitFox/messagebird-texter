@@ -1,8 +1,16 @@
 require 'spec_helper'
 require 'messagebird_sms/message'
+require 'action_texter/validator/request'
 
 RSpec.describe MessagebirdSms::Message do
-  
+  before(:each) do | example|
+    MessagebirdSms.configure do |config|
+      config.path = '/messages'
+      config.endpoint = 'http://messagebird.sms.org'
+      config.content_type = 'application/json'
+      config.product_token = 'SOME_TOKEN'
+    end
+  end
   let(:message_body) { 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirood tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At v' }
   
   let(:message) do
@@ -12,142 +20,6 @@ RSpec.describe MessagebirdSms::Message do
     message.body = message_body
     message.reference = 'Ref:123'
     message
-  end
-  
-  describe '#receiver_plausible?' do
-    context 'when a valid phone number is provided' do
-      it { expect(message.receiver_plausible?).to be true }
-    end
-    
-    context 'when a invalid phone number is provided' do
-      subject(:resource) do
-        message.to = 'Fuubar'        
-        message
-      end
-      it { expect(resource.receiver_plausible?).to be false }
-    end
-  end
-  
-  describe '#receiver_present?' do
-    context 'when a valid phone number is provided' do
-      it { expect(message.receiver_present?).to be true }
-    end
-    
-    context 'when no phone number is provided' do
-      subject(:resource) do
-        message.to = nil        
-        message
-      end
-      it { expect(resource.receiver_present?).to be false }
-    end
-  end
-  
-  describe '#sender_present?' do
-    context 'when a valid from is provided' do
-      it { expect(message.sender_present?).to be true }
-    end
-    
-    context 'when no from is provided' do
-      subject(:resource) do
-        message.from = nil        
-        message
-      end
-      it { expect(resource.sender_present?).to be false }
-    end
-  end
-  
-  describe '#body_present?' do
-    context 'when a valid body is provided' do
-      it { expect(message.body_present?).to be true }
-    end
-    
-    context 'when no body is provided' do
-      subject(:resource) do
-        message.body = nil        
-        message
-      end
-      it { expect(resource.body_present?).to be false }
-    end
-  end
-  
-  describe '#deliver' do
-    context 'when product token is missing in configuration' do
-      before { 
-        #binding.pry
-        MessagebirdSms.configure { |config| config.product_token = nil } }
-      it { expect { message.deliver }.to raise_error MessagebirdSms::Configuration::ProductTokenMissing }
-    end
-    
-    context 'when all needed attributes set' do
-      before do 
-        ActionTexter.configure { |config| config.product_token = 'SOMETOKEN' }
-        request = instance_double(ActionTexter::Request)
-        allow(request).to receive(:perform).and_return(true)
-        allow(message).to receive(:request).and_return(request)
-      end
-      it { expect(message.deliver).to be true }
-    end
-  end
-  
-  describe '#deliver!' do
-    # context 'when product token is missing in configuration' do
-    #   before { MessagebirdSms.configure { |config| config.product_token = nil } }
-    #   it { expect { message.deliver! }.to raise_error MessagebirdSms::Configuration::ProductTokenMissing }
-    # end
-    
-    context 'when product token is given' do
-      before { ActionTexter.configure { |config| config.product_token = 'SOMETOKEN' } }
-      context 'when receiver is missing' do
-        subject(:resource) do
-          message.to = nil
-          message
-        end
-        it { expect { resource.deliver! }.to raise_error MessagebirdSms::Message::ToMissing }
-      end
-    
-      context 'when sender is missing' do
-        subject(:resource) do
-          message.from = nil
-          message
-        end
-        it { expect { resource.deliver! }.to raise_error MessagebirdSms::Message::FromMissing }
-      end
-    
-      context 'when body is missing' do
-        subject(:resource) do
-          message.body = nil
-          message
-        end
-        it { expect { resource.deliver! }.to raise_error MessagebirdSms::Message::BodyMissing }
-      end
-    
-      context 'when body is to long' do
-        subject(:resource) do
-          message.body = [message.body, message.body].join # 2 x 160 signs
-          message
-        end
-        it { expect { resource.deliver! }.to raise_error MessagebirdSms::Message::BodyTooLong }
-      end
-    
-      context 'when to is not plausibe' do
-        subject(:resource) do
-          message.to = 'fuubar'
-          message
-        end
-        it { expect { resource.deliver! }.to raise_error MessagebirdSms::Message::ToUnplausible }
-      end
-    
-    end
-    
-    context 'when all needed attributes set' do
-      before do 
-        MessagebirdSms.configure { |config| config.product_token = 'SOMETOKEN' }
-        request = instance_double(ActionTexter::Request)
-        allow(request).to receive(:perform).and_return(true)
-        allow(message).to receive(:request).and_return(request)
-      end
-      it { expect(message.deliver).to be true }
-    end
   end
   
   describe '#request' do

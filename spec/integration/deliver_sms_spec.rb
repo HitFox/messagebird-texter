@@ -3,7 +3,7 @@ require 'webmock/rspec'
 
 RSpec.describe 'deliver sms' do  
   
-  before do
+  before(:each) do
     @response = '{
                     "id":"b1a429b045665b1cea8dda4b45863728",
                     "href":"https://rest.messagebird.com/messages/b1a429b045665b1cea8dda4b45863728",
@@ -53,7 +53,18 @@ RSpec.describe 'deliver sms' do
         headers: { 'Content-Type' => 'application/json' }).
       to_return(status: 201, body: @response, headers: {})
   end
+  after(:each) do
+
+    MessagebirdSms.configure do |config|
+      config.product_token = 'SOMETOKEN'
+      config.endpoint = 'http://test.host.org'
+      config.path = '/example'
+    end
+
+  end
+
   describe 'the message delivery response' do
+    before {MessagebirdSms.config.product_token = 'SOMETOKEN'}
     subject { NotificationMessenger.notification.deliver_now! }
     
     it 'reponds to #success? with true' do

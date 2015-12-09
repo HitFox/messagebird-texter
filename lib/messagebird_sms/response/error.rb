@@ -1,6 +1,6 @@
 module MessagebirdSms
   class Response
-    class ErrorBody
+    class Error
       attr_reader :code, :description
 
       ERROR_CODES = { 
@@ -14,16 +14,17 @@ module MessagebirdSms
                     }
    
       def initialize error
-        @error = JSON.parse(error, {:symbolize_names => true})
+        @errors = JSON.parse(error, {:symbolize_names => true})[:errors]
       end
 
       def errors
-        @error[:errors].map{|e| e.merge(error_code_message: ERROR_CODES[e[:code]])}
+        @errors.map{|e| e.merge(error_message: ERROR_CODES[e[:code]])}
       end
 
-      def any?
-        errors.any? || false
+      def count
+        @errors.count
       end
+
     end
   end
 end
