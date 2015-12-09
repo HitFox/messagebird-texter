@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = 'messagebird-texter'
   spec.version       = MessagebirdTexter.version
   spec.authors       = ['oliverzeyen']
-  spec.email         = ['oliver.zeyen@gmail.com']
+  spec.email         = ['oliver.zeyen@hitfoxgroup.com']
 
-  spec.summary       = 'Wrapper for the CM SMS Gateway API.'
-  spec.description   = 'Send text messages by means of the HTTP protocol with the service of https://www.cmtelecom.com.'
+  spec.summary       = 'Wrapper for the Messagebird SMS Gateway API.'
+  spec.description   = 'Send text messages/sms by means of the HTTP protocol with the service of https://www.messagebird.com.'
   spec.homepage      = 'https://github.com/HitFox/messagebird-sms'
   spec.license       = 'MIT'
 
