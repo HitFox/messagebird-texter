@@ -1,5 +1,4 @@
 require 'json'
-require 'phony'
 require 'messagebird_texter/validator/message'
 
 module MessagebirdTexter

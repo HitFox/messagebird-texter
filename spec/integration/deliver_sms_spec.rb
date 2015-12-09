@@ -38,6 +38,7 @@ RSpec.describe 'deliver sms' do
       config.product_token = 'SOMETOKEN'
       config.endpoint = 'http://test.host.org'
       config.path = '/example'
+      config.product_token = 'SOMETOKEN'
     end
 
     class NotificationMessenger < MessagebirdTexter::Messenger
@@ -61,7 +62,6 @@ RSpec.describe 'deliver sms' do
   end
 
   describe 'the message delivery response' do
-    before { MessagebirdTexter.config.product_token = 'SOMETOKEN' }
     subject { NotificationMessenger.notification.deliver_now! }
 
     it 'reponds to #success? with true' do

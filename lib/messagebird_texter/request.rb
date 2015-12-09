@@ -22,7 +22,6 @@ module MessagebirdTexter
       end
       response
     end
-    
 
     def valid?
       MessagebirdTexter::Validator::Request.new

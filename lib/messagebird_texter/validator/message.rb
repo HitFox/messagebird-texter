@@ -1,3 +1,4 @@
+require 'phony'
 module MessagebirdTexter
   module Validator
     class Message

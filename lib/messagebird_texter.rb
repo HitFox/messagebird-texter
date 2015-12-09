@@ -13,7 +13,7 @@ module MessagebirdTexter
     end
 
     def configuration
-      @configuration ||= MessagebirdTexter::Configuration.new
+      @configuration ||= Configuration.new
     end
 
     alias_method :config, :configuration
