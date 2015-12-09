@@ -1,20 +1,16 @@
 PATH
   remote: .
   specs:
-    messagebird-sms (0.0.1)
+    messagebird-texter (0.0.1)
       action-texter
-      phony (~> 2.12)
-
-PATH
-  remote: ../action-texter
-  specs:
-    action-texter (0.5.0)
-      json
       phony (~> 2.12)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    action-texter (0.0.1)
+      json
+      phony (~> 2.12)
     addressable (2.3.8)
     coveralls (0.8.5)
       json (~> 1.8)
@@ -75,10 +71,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  action-texter!
   bundler (~> 1.10)
   coveralls
-  messagebird-sms!
+  messagebird-texter!
   rake (~> 10.0)
   rspec (~> 3.0)
   simplecov

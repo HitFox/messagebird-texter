@@ -6,8 +6,8 @@ require 'messagebird_texter/version'
 Gem::Specification.new do |spec|
   spec.name          = 'messagebird-texter'
   spec.version       = MessagebirdTexter.version
-  spec.authors       = ['itschn']
-  spec.email         = ['michael.rueffer@hitfoxgroup.com']
+  spec.authors       = ['oliverzeyen']
+  spec.email         = ['oliver.zeyen@gmail.com']
 
   spec.summary       = 'Wrapper for the CM SMS Gateway API.'
   spec.description   = 'Send text messages by means of the HTTP protocol with the service of https://www.cmtelecom.com.'
