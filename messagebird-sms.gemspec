@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'messagebird_texter/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'messagebird-sms'
+  spec.name          = 'messagebird-texter'
   spec.version       = MessagebirdTexter.version
   spec.authors       = ['itschn']
   spec.email         = ['michael.rueffer@hitfoxgroup.com']
