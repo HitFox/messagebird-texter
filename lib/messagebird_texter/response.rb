@@ -1,5 +1,5 @@
-require 'messagebird_sms/response/body'
-require 'messagebird_sms/response/error'
+require 'messagebird_texter/response/body'
+require 'messagebird_texter/response/error'
 module MessagebirdSms
   class Response
     attr_reader :net_http_response, :body, :code

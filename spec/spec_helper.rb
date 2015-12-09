@@ -10,7 +10,7 @@ SimpleCov.start
 Bundler.setup
 
 require 'phony'
-require 'messagebird_sms'
+require 'messagebird_texter'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

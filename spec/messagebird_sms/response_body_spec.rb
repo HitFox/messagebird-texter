@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'messagebird_sms/response'
-require 'messagebird_sms/response/body'
+require 'messagebird_texter/response'
+require 'messagebird_texter/response/body'
 
 RSpec.describe MessagebirdSms::Response::Body do
   subject(:body) do

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'messagebird_sms/message'
+require 'messagebird_texter/message'
 require 'action_texter/validator/request'
 
 RSpec.describe MessagebirdSms::Message do

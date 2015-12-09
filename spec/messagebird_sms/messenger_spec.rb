@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'messagebird_sms/messenger'
+require 'messagebird_texter/messenger'
 
 RSpec.describe MessagebirdSms::Messenger do
   before do

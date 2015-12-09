@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'messagebird_sms/response'
-require 'messagebird_sms/response/error'
+require 'messagebird_texter/response'
+require 'messagebird_texter/response/error'
 
 RSpec.fdescribe MessagebirdSms::Response do
   let(:successful_response) do

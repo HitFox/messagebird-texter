@@ -1,5 +1,5 @@
-require 'messagebird_sms/response'
-require 'messagebird_sms/validator/request'
+require 'messagebird_texter/response'
+require 'messagebird_texter/validator/request'
 
 module MessagebirdSms
   class Request < ActionTexter::Request

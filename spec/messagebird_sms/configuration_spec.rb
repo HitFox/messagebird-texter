@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'messagebird_sms/configuration'
+require 'messagebird_texter/configuration'
 
 RSpec.describe MessagebirdSms::Configuration do
   let(:config) { described_class.new }
