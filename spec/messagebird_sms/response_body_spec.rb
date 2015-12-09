@@ -3,7 +3,7 @@ require 'messagebird_sms/response'
 require 'messagebird_sms/response/body'
 
 RSpec.describe MessagebirdSms::Response::Body do
-  subject(:body) do 
+  subject(:body) do
     described_class.new('{
                             "id":"b1a429b045665b1cea8dda4b45863728",
                             "href":"https://rest.messagebird.com/messages/b1a429b045665b1cea8dda4b45863728",
@@ -20,7 +20,7 @@ RSpec.describe MessagebirdSms::Response::Body do
                             "scheduledDatetime":"2015-12-07T20:20:30+00:00",
                             "createdDatetime":"2015-12-07T16:20:30+00:00",
                             "recipients":
-                                          { 
+                                          {
                                             "totalCount":1,
                                             "totalSentCount":1,
                                             "totalDeliveredCount":0,
@@ -36,13 +36,13 @@ RSpec.describe MessagebirdSms::Response::Body do
                           }')
   end
 
-  subject(:no_date_body) do 
+  subject(:no_date_body) do
     described_class.new('{
                             "createdDatetime":null,
                             "scheduledDatetime":null
                           }')
   end
-  
+
   describe '#id' do
     context 'returns a sending id' do
       it { expect(body.id).to eql('b1a429b045665b1cea8dda4b45863728') }
@@ -51,7 +51,7 @@ RSpec.describe MessagebirdSms::Response::Body do
 
   describe '#href' do
     context 'returns a href' do
-        it { expect(body.href).to eql('https://rest.messagebird.com/messages/b1a429b045665b1cea8dda4b45863728') }
+      it { expect(body.href).to eql('https://rest.messagebird.com/messages/b1a429b045665b1cea8dda4b45863728') }
     end
   end
 
@@ -100,11 +100,11 @@ RSpec.describe MessagebirdSms::Response::Body do
     context 'returns the datacoding' do
       it { expect(body.datacoding).to eql('plain') }
     end
-  end 
+  end
 
   describe '#scheduled_datetime' do
     context 'returns the scheduled datetime if present' do
-      it { expect(body.scheduled_datetime).to be_a_kind_of( Date )}
+      it { expect(body.scheduled_datetime).to be_a_kind_of(Date) }
     end
     context 'returns the nil if scheduled datetime is not present' do
       it { expect(no_date_body.scheduled_datetime).to be_nil }
@@ -113,7 +113,7 @@ RSpec.describe MessagebirdSms::Response::Body do
 
   describe '#created_datetima' do
     context 'returns the created datetime if present' do
-      it { expect(body.created_datetime).to be_a_kind_of( Date )}
+      it { expect(body.created_datetime).to be_a_kind_of(Date) }
     end
     context 'returns the nil if created datetime is not present' do
       it { expect(no_date_body.created_datetime).to be_nil }
@@ -122,32 +122,31 @@ RSpec.describe MessagebirdSms::Response::Body do
 
   describe '#recipients' do
     context 'returns the recipients as open struct' do
-      it { expect(body.recipients).to be_a_kind_of( OpenStruct ) }
+      it { expect(body.recipients).to be_a_kind_of(OpenStruct) }
     end
-
   end
 
   describe '#items' do
     context 'returns an array' do
-      it { expect(body.recipients.items).to be_a_kind_of( Array ) }
+      it { expect(body.recipients.items).to be_a_kind_of(Array) }
     end
   end
 
   describe '#item' do
     context 'returns an open struct' do
-      it { expect(body.recipients.items.first).to be_a_kind_of( OpenStruct ) }
+      it { expect(body.recipients.items.first).to be_a_kind_of(OpenStruct) }
     end
 
     context 'contains a sent status' do
-      it {expect(body.recipients.items.first.status).to eql('sent')}
+      it { expect(body.recipients.items.first.status).to eql('sent') }
     end
 
     context 'contains a sent datetime' do
-      it {expect(body.recipients.items.first.status_datetime).to be_a_kind_of( Date )}
+      it { expect(body.recipients.items.first.status_datetime).to be_a_kind_of(Date) }
     end
 
     context 'contains a recipient phoner number' do
-      it {expect(body.recipients.items.first.recipient).to eql( 491759332902 )}
+      it { expect(body.recipients.items.first.recipient).to eql(491_759_332_902) }
     end
   end
 end

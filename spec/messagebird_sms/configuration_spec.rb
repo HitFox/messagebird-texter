@@ -2,12 +2,11 @@ require 'spec_helper'
 require 'messagebird_sms/configuration'
 
 RSpec.describe MessagebirdSms::Configuration do
-  
   let(:config) { described_class.new }
 
   describe '#endpoint' do
     context 'when endpoint is set through setter' do
-      subject(:resource) do 
+      subject(:resource) do
         config.endpoint = 'http://local.host'
         config
       end
@@ -16,10 +15,10 @@ RSpec.describe MessagebirdSms::Configuration do
       end
     end
   end
-  
+
   describe '#path' do
     context 'when path is set through setter' do
-      subject(:resource) do 
+      subject(:resource) do
         config.path = '/example'
         config
       end
@@ -28,10 +27,10 @@ RSpec.describe MessagebirdSms::Configuration do
       end
     end
   end
-  
+
   describe '#product_token' do
     context 'when product_token is set through setter' do
-      subject(:resource) do 
+      subject(:resource) do
         config.product_token = 'SOMETOKEN'
         config
       end
@@ -39,9 +38,9 @@ RSpec.describe MessagebirdSms::Configuration do
         expect(resource.product_token).to eq 'SOMETOKEN'
       end
     end
-    
+
     context 'when product_token is set through api_key setter' do
-      subject(:resource) do 
+      subject(:resource) do
         config.api_key = 'SOMEKEY'
         config
       end

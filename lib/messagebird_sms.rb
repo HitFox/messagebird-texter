@@ -1,4 +1,4 @@
-require 'action-texter'
+require 'action_texter'
 require 'messagebird_sms/configuration'
 
 module MessagebirdSms
@@ -6,7 +6,7 @@ module MessagebirdSms
   autoload :Message, 'messagebird_sms/message'
   autoload :MessageDelivery, 'messagebird_sms/message_delivery'
   autoload :Request, 'messagebird_sms/request'
-  
+
   class << self
     def configure
       yield(configuration)
@@ -15,7 +15,7 @@ module MessagebirdSms
     def configuration
       @configuration ||= MessagebirdSms::Configuration.new
     end
-    
-    alias :config :configuration
+
+    alias_method :config, :configuration
   end
 end

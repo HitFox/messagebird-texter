@@ -1,12 +1,12 @@
 module MessagebirdSms
   class Response
     class Body
-      attr_reader :id, 
-                  :href, 
-                  :direction, 
-                  :type, 
+      attr_reader :id,
+                  :href,
+                  :direction,
+                  :type,
                   :originator,
-                  :content, 
+                  :content,
                   :reference,
                   :validity,
                   :gateway,
@@ -16,8 +16,8 @@ module MessagebirdSms
                   :created_datetime,
                   :recipients
 
-      def initialize body
-        @parsed_body        = JSON.parse( body, {:symbolize_names => true} )
+      def initialize(body)
+        @parsed_body        = JSON.parse(body, { symbolize_names: true })
         @id                 = @parsed_body[:id]
         @href               = @parsed_body[:href]
         @direction          = @parsed_body[:direction]
@@ -44,17 +44,17 @@ module MessagebirdSms
 
       def recipients
         OpenStruct.new(
-          :total_count => @recipients[:totalCount], 
-          :total_sent_count => @recipients[:totalSentCount],
-          :total_delivered_count=> @recipients[:totalDeliveredCount],
-          :items => items
+          total_count: @recipients[:totalCount],
+          total_sent_count: @recipients[:totalSentCount],
+          total_delivered_count: @recipients[:totalDeliveredCount],
+          items: items
 
-          ) unless @recipients.nil?
+        ) unless @recipients.nil?
       end
 
       def items
-        @recipients[:items].map do |i| 
-          OpenStruct.new( item(i) )
+        @recipients[:items].map do |i|
+          OpenStruct.new(item(i))
         end
       end
 
@@ -65,7 +65,6 @@ module MessagebirdSms
           status_datetime: Date.parse(item[:statusDatetime])
         }
       end
-
     end
   end
 end
