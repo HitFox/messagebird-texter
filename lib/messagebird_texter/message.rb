@@ -1,5 +1,6 @@
 require 'json'
 require 'phony'
+require 'messagebird_texter/validator/message'
 
 module MessagebirdTexter
   class Message < ActionTexter::Message
@@ -11,6 +12,10 @@ module MessagebirdTexter
       JSON.generate(recipients: to,
                     originator: from,
                     body: body)
+    end
+
+    def valid?
+      MessagebirdTexter::Validator::Message.new self
     end
   end
 end

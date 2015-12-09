@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable MethodLength
 module MessagebirdTexter
   class Response
     class Body
@@ -17,7 +19,7 @@ module MessagebirdTexter
                   :recipients
 
       def initialize(body)
-        @parsed_body        = JSON.parse(body, { symbolize_names: true })
+        @parsed_body        = JSON.parse(body, symbolize_names: true)
         @id                 = @parsed_body[:id]
         @href               = @parsed_body[:href]
         @direction          = @parsed_body[:direction]

@@ -15,13 +15,12 @@ module MessagebirdTexter
     end
 
     def perform
-      if valid?
-        uri = URI.parse(@endpoint)
-        Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
-          @response = Response.new(http.post(@path, body, 'Authorization' => "AccessKey #{@api_key}", 'Content-Type' => 'application/json'))
-        end
-        response
+      return if valid?
+      uri = URI.parse(@endpoint)
+      Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+        @response = Response.new(http.post(@path, body, 'Authorization' => "AccessKey #{@api_key}", 'Content-Type' => 'application/json'))
       end
+      response
     end
 
     def valid?
