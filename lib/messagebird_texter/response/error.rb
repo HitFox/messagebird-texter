@@ -14,7 +14,7 @@ module MessagebirdTexter
       }
 
       def initialize(error)
-        @errors = JSON.parse(error, { symbolize_names: true })[:errors]
+        @errors = JSON.parse(error, symbolize_names: true)[:errors]
       end
 
       def errors
