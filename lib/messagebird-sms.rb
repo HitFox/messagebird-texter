@@ -1,6 +1,5 @@
 require 'action-texter'
 require 'messagebird_sms/configuration'
-require 'pry'
 
 module MessagebirdSms
   autoload :Messenger, 'messagebird_sms/messenger'
