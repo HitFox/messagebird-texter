@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ['oliver.zeyen@hitfoxgroup.com']
 
   spec.summary       = 'Wrapper for the Messagebird SMS Gateway API.'
-  spec.description   = 'Send text messages/sms by means of the HTTP protocol with the service of https://www.messagebird.com.'
-  spec.homepage      = 'https://github.com/HitFox/messagebird-sms'
+  spec.description   = 'Create ActionMailer-like notifiers and send messages via the Messagebird REST API'
+  spec.homepage      = 'https://github.com/HitFox/messagebird-texter'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
@@ -26,10 +26,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
 
   if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0')
-    spec.add_runtime_dependency 'phony', '~> 2.12'
     spec.add_runtime_dependency 'action-texter'
   else
-    spec.add_dependency 'phony', '~> 2.15'
     spec.add_dependency 'action-texter'
   end
 end
