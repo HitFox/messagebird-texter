@@ -53,8 +53,9 @@ module MessagebirdTexter
 
         ) unless @recipients.nil?
       end
-      
+
       private
+
       def items
         @recipients[:items].map do |i|
           OpenStruct.new(item(i))

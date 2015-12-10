@@ -1,15 +1,16 @@
 ![alt text](http://www.hitfoxgroup.com/downloads/hitfox_logo_with_tag_two_colors_WEB.png "Logo Hitfox Group")
 
 
-messagebird-sms
+messagebird-texter
 =======
 
 
 Description
 -----------
 
-Send text messages by means of the HTTP protocol with the service of https://www.messagebird.com from your ruby app.
-​
+Create ActionMailer-like notifiers to send messages via the Messagebird REST API
+ 
+
 Usage
 ------------
 
@@ -19,9 +20,9 @@ Use `MessagebirdTexter.configure` to set `product_token`, `endpoint` and `path`.
 
 ```ruby
 MessagebirdTexter.configure do |config|
-  config.product_token = 'YOUR_MESSAGEBIRD_API_TOKEN'   # mandatory
-  config.endpoint = 'https://rest.messagebird.com'      # default
-  config.path = '/messages'                             # default
+  config.product_token = 'YOUR_MESSAGEBIRD_API_TOKEN'   
+  config.endpoint = 'https://rest.messagebird.com'     
+  config.path = '/messages'                             
 end
 ```
 
@@ -152,6 +153,16 @@ $ gem update messagebird-texter
 ​
 Changelog
 ---------
+
+###0.0.1 (2015-12-09)
+Intilial release
+
+###0.0.2 (2015-12-10)
+Minor fixes, readme update
+
+###0.1.0 (2015-12-10)
+- Completly remove validators, api handles errors
+- readme update
 
 ## Contributing
 

@@ -1,5 +1,4 @@
 require 'messagebird_texter/response'
-require 'messagebird_texter/validator/request'
 
 module MessagebirdTexter
   class Request < ActionTexter::Request
@@ -15,16 +14,11 @@ module MessagebirdTexter
     end
 
     def perform
-      return unless valid?
       uri = URI.parse(@endpoint)
       Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
         @response = Response.new(http.post(@path, body, 'Authorization' => "AccessKey #{@api_key}", 'Content-Type' => 'application/json'))
       end
       response
-    end
-
-    def valid?
-      MessagebirdTexter::Validator::Request.new
     end
   end
 end
