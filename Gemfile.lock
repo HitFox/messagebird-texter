@@ -1,9 +1,8 @@
 PATH
   remote: .
   specs:
-    messagebird-texter (0.1.0)
+    messagebird-texter (0.1.1)
       action-texter
-      phony (~> 2.12)
 
 GEM
   remote: https://rubygems.org/
