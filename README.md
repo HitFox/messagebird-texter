@@ -153,6 +153,8 @@ $ gem update messagebird-texter
 ​
 Changelog
 ---------
+###0.1.1 (2015-12-11)
+- remove phony gem fom dependecies
 
 ###0.1.0 (2015-12-10)
 - Completly remove validators, api handles errors
