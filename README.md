@@ -116,7 +116,7 @@ Delivering a message returns a `MessagebirdTexter::Response` object.
 
 ```ruby
 => response.error
-=> #<MessagebirdTexter::Response::Error:0x007fa3d0c39738
+=> <MessagebirdTexter::Response::Error:0x007fa3d0c39738
    @errors=[{:code=>25, :description=>"Not enough balance", :parameter=>nil}]>
 ```
 
