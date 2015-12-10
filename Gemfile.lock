@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    messagebird-texter (0.0.2)
+    messagebird-texter (0.1.0)
       action-texter
       phony (~> 2.12)
 
