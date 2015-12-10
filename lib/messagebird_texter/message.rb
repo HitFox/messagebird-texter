@@ -10,6 +10,12 @@ module MessagebirdTexter
       JSON.generate(recipients: to,
                     originator: from,
                     body: body)
+
+
+    end
+
+    def valid?
+      true
     end
   end
 end
