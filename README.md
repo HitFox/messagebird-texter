@@ -154,15 +154,16 @@ $ gem update messagebird-texter
 Changelog
 ---------
 
-###0.0.1 (2015-12-09)
-Intilial release
-
-###0.0.2 (2015-12-10)
-Minor fixes, readme update
-
 ###0.1.0 (2015-12-10)
 - Completly remove validators, api handles errors
 - readme update
+
+###0.0.2 (2015-12-10)
+- Minor fixes, readme update
+ 
+###0.0.1 (2015-12-09)
+ - Intilial release
+ - 
 
 ## Contributing
 
