@@ -79,7 +79,7 @@ Delivering a message returns a `MessagebirdTexter::Response` object.
 
 ```ruby
 => response.body
-=> #<MessagebirdTexter::Response::Body:0x007faaca1cfe90
+=> <MessagebirdTexter::Response::Body:0x007faaca1cfe90
       @content="Some text",
       @created_datetime="2015-12-09T21:43:23+00:00",
       @datacoding="plain",
@@ -102,7 +102,7 @@ Delivering a message returns a `MessagebirdTexter::Response` object.
 		 @validity=nil>
 
 => response.body.recipients
-=> #<OpenStruct total_count=1, 
+=> <OpenStruct total_count=1, 
 				   total_sent_count=1, 
 				   total_delivered_count=0, 
 				   items=[
